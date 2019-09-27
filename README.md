@@ -9,7 +9,7 @@
 
 <p  align="center">
 
-The game is made with React, Redux, NodeJS and MongoDB
+The game is made with React, Redux, NodeJS, MongoDB and TypeScript
 
 </p>
 
@@ -26,11 +26,7 @@ To get a local copy up and running follow these simple steps.
   
 
 ### Prerequisites
-
   
-
-This is an example of how to list things you need to use the software and how to install them.
-
 * nodejs, npm
 * docker
 * docker-compose
@@ -44,13 +40,13 @@ git clone https:://github.com/kamhix/react-tic-tac-toe.git
 ```
 
 2. Install NPM packages and Launch
-#### Client
+#### App
 ```sh
-cd client
+cd app
 npm install
 npm start
 ```
-#### Server
+#### Api
 ```sh
 cd server
 npm install
@@ -61,6 +57,22 @@ or
 cd server
 docker-compose up
 ```
+
+
+2. Run the test
+#### App
+```sh
+cd app
+npm install
+npm test
+```
+#### Api
+```sh
+cd server
+npm install
+npm test
+```
+
 ## License
 
   

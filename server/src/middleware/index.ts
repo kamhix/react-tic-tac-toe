@@ -1,7 +1,17 @@
-const { APIError, InternalServerError } = require('rest-api-errors');
-const { STATUS_CODES } = require('http');
+import {Request, Response, NextFunction} from 'express';
 
-const errorHandler = (err, req, res, next) => {
+import { APIError, InternalServerError } from 'rest-api-errors';
+import { STATUS_CODES } from 'http';
+
+interface APIErrorType {
+  status: number;
+  code: string;
+  name: string;
+  message: string;
+};
+
+
+const errorHandler = (err: APIErrorType, req: Request, res: Response, next: NextFunction) => {
   const error = (err.status === 401 ||
     err instanceof APIError) ? err : new InternalServerError();
 
@@ -23,4 +33,4 @@ const errorHandler = (err, req, res, next) => {
     });
 };
 
-module.exports = { errorHandler };
+export default errorHandler;
