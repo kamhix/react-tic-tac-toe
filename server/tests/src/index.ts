@@ -1,7 +1,9 @@
-process.env.IS_TESTING = true;
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const app = require('../app');
+process.env.IS_TESTING = "true";
+import chai from 'chai';
+import chaiHttp from 'chai-http';
+import IGame from '../../src/interface/game';
+
+var app = require('../../src/app');
 
 chai.use(chaiHttp);
 chai.should();
@@ -19,14 +21,16 @@ describe("Games", () => {
     });
     
     it("should post one game record", (done) => {
+      const dummyGame:IGame = {
+        moves: [{ squares: Array(9).fill(null) }],
+        status: 'win',
+        message: 'A mere test'
+      };
+
       chai.request(app)
         .post('/api/v1/games')
         .type('form')
-        .send({
-          'moves': [{squares: []}],
-          'status': 'win',
-          'message': 'A mere test'
-        })
+        .send(dummyGame)
         .end((err, res) => {
           res.should.have.status(200);
           res.body.should.be.a('object');

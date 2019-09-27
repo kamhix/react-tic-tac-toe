@@ -1,8 +1,9 @@
-var mongoose = require('mongoose');
+import mongoose from 'mongoose';
+import IConfig from '../interface/config';
 
-module.exports = {
-  connect: config => {
-    mongoose.connect(process.env.IS_TESTING ? config.dbtest : config.db, { 
+export default {
+  connect: (config: IConfig)  => {
+    mongoose.connect(process.env.NODE_ENV == "test" ? config.dbtest : config.db, { 
       useNewUrlParser: true, 
       useUnifiedTopology: true 
     }, function (err) {

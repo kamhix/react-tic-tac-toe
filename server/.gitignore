@@ -1,5 +1,7 @@
 /node_modules
 /data
+/build
+/tests/build
 
 # misc
 .DS_Store
